@@ -18,6 +18,7 @@
 		B03B4475278F31CB00B3AD7C /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03B446A278F31CB00B3AD7C /* HomeProtocols.swift */; };
 		B03B4478278F31CB00B3AD7C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03B4470278F31CB00B3AD7C /* HomeInteractor.swift */; };
 		B03B4479278F31CB00B3AD7C /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03B4472278F31CB00B3AD7C /* HomeRouter.swift */; };
+		B03B447F2791BBB900B3AD7C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03B447E2791BBB900B3AD7C /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B03B446A278F31CB00B3AD7C /* HomeProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 		B03B4470278F31CB00B3AD7C /* HomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		B03B4472278F31CB00B3AD7C /* HomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		B03B447E2791BBB900B3AD7C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				B03B447A278F31EF00B3AD7C /* AppDelegate */,
 				B03B4463278F31CB00B3AD7C /* Module */,
 				B03B447B278F321A00B3AD7C /* Resources */,
+				B03B447C2791BB0900B3AD7C /* Services */,
 				B03B445D278F31A500B3AD7C /* Info.plist */,
 			);
 			path = AppMovies;
@@ -162,6 +165,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B03B447C2791BB0900B3AD7C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B03B447D2791BB1F00B3AD7C /* API */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B03B447D2791BB1F00B3AD7C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B03B447E2791BBB900B3AD7C /* API.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,6 +259,7 @@
 				B03B4474278F31CB00B3AD7C /* HomePresenter.swift in Sources */,
 				B03B4475278F31CB00B3AD7C /* HomeProtocols.swift in Sources */,
 				B03B4479278F31CB00B3AD7C /* HomeRouter.swift in Sources */,
+				B03B447F2791BBB900B3AD7C /* API.swift in Sources */,
 				B03B4452278F319200B3AD7C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
