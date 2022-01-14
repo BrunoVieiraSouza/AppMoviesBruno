@@ -7,8 +7,12 @@
 
 import Foundation
 
-class HomeInteractor {
+class HomeInteractor: HomeListPresenterToInteractorProtocol {
+
+    weak var presenter: HomeListInteractorToPresenterProtocol?
+    var movie: MovieHomeModel?
     
-    
-    
+    func fetchLiveNews() {
+        
+    }
 }

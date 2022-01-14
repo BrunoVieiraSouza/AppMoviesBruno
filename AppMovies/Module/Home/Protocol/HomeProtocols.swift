@@ -8,27 +8,7 @@
 import Foundation
 import UIKit
 
-protocol HomeListPresenterToViewProtocol: AnyObject {
-    func showMovie()
-    func showError()
-}
-
-protocol HomeListInteractorToPresenterProtocol: AnyObject {
-    func movieFetched()
-    func movieFetchedFailed()
-}
-
-protocol HomeListPresenterToInteractorProtocol: AnyObject {
-    var presenter: HomeListPresenterToInteractorProtocol? { get set }
-    var movie: MovieHomeModel? { get }
-    
-    func fetchLiveNews()
-}
-
-protocol HomeListPresenterToRouterProtocol: AnyObject {
-    static func createModule() -> UIViewController
-}
-
+// view para presenter
 protocol HomeListViewToPresenterProtocol: AnyObject {
     var view: HomeListPresenterToViewProtocol? { get set }
     var interactor: HomeListPresenterToInteractorProtocol? { get set }
@@ -38,3 +18,31 @@ protocol HomeListViewToPresenterProtocol: AnyObject {
     func getMovieCount() -> Int?
     func getMovie(index: Int) -> MovieHomeModel?
 }
+
+// presenter para view
+protocol HomeListPresenterToViewProtocol: AnyObject {
+    func showMovie()
+    func showError()
+}
+
+// interactor para presenter
+protocol HomeListInteractorToPresenterProtocol: AnyObject {
+    func movieFetched()
+    func movieFetchedFailed()
+}
+
+//presenter para interactor
+protocol HomeListPresenterToInteractorProtocol: AnyObject {
+    var presenter: HomeListInteractorToPresenterProtocol? { get set }
+    var movie: MovieHomeModel? { get }
+    
+    func fetchLiveNews()
+}
+
+// presenter para router
+protocol HomeListPresenterToRouterProtocol: AnyObject {
+    static func createModule() -> UIViewController
+}
+
+
+

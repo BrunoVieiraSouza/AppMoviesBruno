@@ -8,12 +8,23 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    var presenter: HomeListViewToPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
+}
 
-
+extension HomeViewController: HomeListPresenterToViewProtocol {
+    func showMovie() {
+        
+    }
+    
+    func showError() {
+        
+    }
+    
+    
 }
 

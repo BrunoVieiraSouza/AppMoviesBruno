@@ -7,7 +7,7 @@
 
 import Foundation
 
-private let baseURL = "https://api.themoviedb.org/3/movie/"
+private let baseURL = "https://api.themoviedb.org"
 private let apiKey = "dab9b242bdeecdff3d4a8e222a77b4c7"
 //"https://api.themoviedb.org/3/movie/634649?api_key=dab9b242bdeecdff3d4a8e222a77b4c7&language=pt-BR"
 
@@ -33,7 +33,7 @@ class REST {
     //MARK: - Request
     
     static func fetchMovie (idMovie: Int, completion: @escaping (MovieHomeModel) -> Void, onError: @escaping (MovieError) -> Void) {
-        let urlString = "\(baseURL)\(idMovie)?api_key=\(apiKey)&language=pt-BR"
+        let urlString = "\(baseURL)/3/movie/\(idMovie)?api_key=\(apiKey)&language=pt-BR"
         guard let url = URL(string: urlString) else {
             onError(.url)
             return
