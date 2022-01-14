@@ -9,5 +9,22 @@ import Foundation
 
 class HomePresenter {
     
+    //MARK: - Properties
+    weak var view: HomeListPresenterToViewProtocol?
+    var interactor: HomeListPresenterToInteractorProtocol?
+    var router: HomeListPresenterToRouterProtocol?
+    
+    
+}
+
+extension HomePresenter: HomeListInteractorToPresenterProtocol {
+    func movieFetched() {
+        
+    }
+    
+    func movieFetchedFailed() {
+        
+    }
+    
     
 }

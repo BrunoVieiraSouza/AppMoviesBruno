@@ -12,6 +12,7 @@ class HomeRouter {
     
     class func createModule() -> UIViewController {
         let view = HomeViewController()
+       // let presenter: HomeListViewToPresenterProtocol & HomeListInteractorToPresenterProtocol = HomePresenter()
         
         
         return view
@@ -20,4 +21,5 @@ class HomeRouter {
     static var mainstoryboard: UIStoryboard {
         return UIStoryboard(name:"Main",bundle: Bundle.main)
     }
+    
 }

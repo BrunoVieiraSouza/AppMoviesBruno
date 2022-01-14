@@ -18,8 +18,8 @@ protocol HomeListInteractorToPresenterProtocol: AnyObject {
     func movieFetchedFailed()
 }
 
-protocol HomeListPresenterToInteractor: AnyObject {
-    var presenter: HomeListPresenterToInteractor? { get set }
+protocol HomeListPresenterToInteractorProtocol: AnyObject {
+    var presenter: HomeListPresenterToInteractorProtocol? { get set }
     var movie: MovieHomeModel? { get }
     
     func fetchLiveNews()
@@ -31,7 +31,7 @@ protocol HomeListPresenterToRouterProtocol: AnyObject {
 
 protocol HomeListViewToPresenterProtocol: AnyObject {
     var view: HomeListPresenterToViewProtocol? { get set }
-    var interactor: HomeListPresenterToInteractor? { get set }
+    var interactor: HomeListPresenterToInteractorProtocol? { get set }
     var router: HomeListPresenterToRouterProtocol? { get set }
     
     func updateView()
