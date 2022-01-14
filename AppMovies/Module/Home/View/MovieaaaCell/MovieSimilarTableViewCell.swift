@@ -9,15 +9,11 @@ import UIKit
 
 class MovieSimilarTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var posterPathImageView: UIImageView!
     
+    @IBOutlet weak var titleMovieSimilarLabel: UILabel!
+    
+    @IBOutlet weak var dateMovieSimilarLabel: UILabel!
+    
+    @IBOutlet weak var genreMovieSimilarLabel: UILabel!
 }
