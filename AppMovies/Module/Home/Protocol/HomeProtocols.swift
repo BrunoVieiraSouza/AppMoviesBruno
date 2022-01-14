@@ -36,7 +36,7 @@ protocol HomeListPresenterToInteractorProtocol: AnyObject {
     var presenter: HomeListInteractorToPresenterProtocol? { get set }
     var movie: MovieHomeModel? { get }
     
-    func fetchLiveNews()
+    func fetchMovie()
 }
 
 // presenter para router

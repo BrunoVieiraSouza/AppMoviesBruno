@@ -12,7 +12,11 @@ class HomeInteractor: HomeListPresenterToInteractorProtocol {
     weak var presenter: HomeListInteractorToPresenterProtocol?
     var movie: MovieHomeModel?
     
-    func fetchLiveNews() {
-        
+    func fetchMovie() {
+        REST.fetchMovie(idMovie: 568124) { success in
+            self.movie = success
+        } onError: { error in
+            print("error")
+        }
     }
 }
