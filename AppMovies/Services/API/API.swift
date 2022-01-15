@@ -34,6 +34,7 @@ class REST {
     
     static func fetchMovie (idMovie: Int, completion: @escaping (MovieHomeModel) -> Void, onError: @escaping (MovieError) -> Void) {
         let urlString = "\(baseURL)/3/movie/\(idMovie)?api_key=\(apiKey)&language=pt-BR"
+        // https://api.themoviedb.org/3/movie/568124?api_key=dab9b242bdeecdff3d4a8e222a77b4c7&language=pt-BR
         guard let url = URL(string: urlString) else {
             onError(.url)
             return
@@ -51,6 +52,40 @@ class REST {
                     do {
                         let resultsMovie = try JSONDecoder().decode(MovieHomeModel.self, from: data)
                         completion(resultsMovie)
+                    } catch {
+                        print(error.localizedDescription)
+                        onError(.invalidJson)
+                    }
+                } else {
+                    print("status code invalido pelo servidor")
+                    onError(.responseStatusCode(code: response.statusCode))
+                }
+            } else {
+                onError(.taskError(error: error!))
+            }
+        }
+        dataTask.resume()
+    }
+    
+    static func fetchMoviesSimilar (idMovie: Int, completion: @escaping (MoviesSimilarModel) -> Void, onError: @escaping (MovieError) -> Void) {
+        let urlString = "\(baseURL)/3/movie/\(idMovie)?api_key=\(apiKey)&language=pt-BR"
+        guard let url = URL(string: urlString) else {
+            onError(.url)
+            return
+        }
+        let dataTask = session.dataTask(with: url) { data, response, error in
+            if error == nil {
+                guard let response = response as? HTTPURLResponse else {
+                    onError(.noResponse)
+                    return
+                }
+                if response.statusCode == 200 {
+                    guard let data = data else {
+                        return
+                    }
+                    do {
+                        let resultsMoviesSimilar = try JSONDecoder().decode(MoviesSimilarModel.self, from: data)
+                        completion(resultsMoviesSimilar)
                     } catch {
                         print(error.localizedDescription)
                         onError(.invalidJson)

@@ -16,7 +16,7 @@ protocol HomeListViewToPresenterProtocol: AnyObject {
     
     func updateView()
     func getMovieCount() -> Int?
-    func getMovie(index: Int) -> MovieHomeModel?
+    func getMovie() -> MovieHomeModel?
 }
 
 // presenter para view
@@ -27,15 +27,14 @@ protocol HomeListPresenterToViewProtocol: AnyObject {
 
 // interactor para presenter
 protocol HomeListInteractorToPresenterProtocol: AnyObject {
-    func movieFetched()
+    func movieFetched(movie: MovieHomeModel)
     func movieFetchedFailed()
 }
 
 //presenter para interactor
 protocol HomeListPresenterToInteractorProtocol: AnyObject {
     var presenter: HomeListInteractorToPresenterProtocol? { get set }
-    var movie: MovieHomeModel? { get }
-    
+
     func fetchMovie()
 }
 

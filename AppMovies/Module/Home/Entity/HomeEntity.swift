@@ -15,4 +15,15 @@ struct MovieHomeModel: Codable {
     let popularity: Double
     let posterPath: String
     let voteCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case originalTitle = "original_title"
+        case popularity
+        case posterPath = "poster_path"
+        case voteCount = "vote_count"
+        
+    }
+    
+    
 }

@@ -8,34 +8,35 @@
 import Foundation
 
 class HomePresenter: HomeListViewToPresenterProtocol {
+    
+    var movie: MovieHomeModel?
 
     //MARK: - Properties
-    weak var view: HomeListPresenterToViewProtocol?
+    var view: HomeListPresenterToViewProtocol?
     var interactor: HomeListPresenterToInteractorProtocol?
     var router: HomeListPresenterToRouterProtocol?
     
     
     func updateView() {
-    
+        interactor?.fetchMovie()
     }
     
     func getMovieCount() -> Int? {
-        return nil
+        return 1
     }
     
-    func getMovie(index: Int) -> MovieHomeModel? {
-        return nil
+    func getMovie() -> MovieHomeModel? {
+        return movie
     }
 }
 
 extension HomePresenter: HomeListInteractorToPresenterProtocol {
-    func movieFetched() {
-        
+    func movieFetched(movie: MovieHomeModel) {
+        self.movie = movie
+        view?.showMovie()
     }
     
     func movieFetchedFailed() {
-        
+        view?.showError()
     }
-    
-    
 }

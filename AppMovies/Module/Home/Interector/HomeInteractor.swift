@@ -9,14 +9,14 @@ import Foundation
 
 class HomeInteractor: HomeListPresenterToInteractorProtocol {
 
-    weak var presenter: HomeListInteractorToPresenterProtocol?
-    var movie: MovieHomeModel?
+    var presenter: HomeListInteractorToPresenterProtocol?
     
     func fetchMovie() {
-        REST.fetchMovie(idMovie: 568124) { success in
-            self.movie = success
+        REST.fetchMovie(idMovie: 568124) { movie in
+            self.presenter?.movieFetched(movie: movie)
         } onError: { error in
-            print("error")
+            self.presenter?.movieFetchedFailed()
+            print("error ao buscar movie")
         }
     }
 }
