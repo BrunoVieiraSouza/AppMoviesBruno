@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var posterPathMovie: UIImageView!
     
     var presenter: HomeListViewToPresenterProtocol?
@@ -29,7 +29,8 @@ extension HomeViewController: HomeListPresenterToViewProtocol {
         
     }
     
-    private func setUpTableView() {
+    func setUpTableView() {
+        guard let tableView = tableView else {return}
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -57,14 +58,25 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PosterPathTableViewCell", for: indexPath) as? PosterPathTableViewCell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PosterPathTableViewCell", for: indexPath) as? PosterPathTableViewCell
+            //cell.frame = posterPathMovie.frame
+            return cell ?? UITableViewCell()
         
+        }
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell
+            return cell ?? UITableViewCell()
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSimilarTableViewCell", for: indexPath) as? MovieSimilarTableViewCell
         return cell ?? UITableViewCell()
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
+    
+
     
 }
 

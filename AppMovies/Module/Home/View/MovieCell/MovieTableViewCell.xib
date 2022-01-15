@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="434" height="130"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Very Best Of Johnny Depp" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKz-sN-gML">
-                                <rect key="frame" x="10" y="10" width="339" height="67"/>
+                                <rect key="frame" x="10" y="10" width="359" height="67"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <color key="textColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="height" constant="45" id="tdG-jf-inf"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="🤍"/>
+                                <buttonConfiguration key="configuration" style="plain" title="🤍a"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -56,7 +56,7 @@
                             <constraint firstAttribute="height" constant="130" id="2XD-SZ-h68"/>
                             <constraint firstItem="DKz-sN-gML" firstAttribute="top" secondItem="o3f-8c-pMq" secondAttribute="top" constant="10" id="9tn-rT-UV1"/>
                             <constraint firstItem="TW1-jD-8tB" firstAttribute="centerY" secondItem="NNS-1J-4az" secondAttribute="centerY" id="EYQ-b3-1ws"/>
-                            <constraint firstItem="K1A-dv-Oeh" firstAttribute="leading" secondItem="DKz-sN-gML" secondAttribute="trailing" constant="30" id="MOJ-EY-WXq"/>
+                            <constraint firstItem="K1A-dv-Oeh" firstAttribute="leading" secondItem="DKz-sN-gML" secondAttribute="trailing" constant="10" id="MOJ-EY-WXq"/>
                             <constraint firstItem="NNS-1J-4az" firstAttribute="leading" secondItem="o3f-8c-pMq" secondAttribute="leading" constant="10" id="Mwg-dI-iql"/>
                             <constraint firstItem="NNS-1J-4az" firstAttribute="top" secondItem="DKz-sN-gML" secondAttribute="bottom" constant="20" id="kr4-pW-0CH"/>
                             <constraint firstItem="K1A-dv-Oeh" firstAttribute="top" secondItem="o3f-8c-pMq" secondAttribute="top" constant="10" id="qVF-Wb-17M"/>
@@ -79,7 +79,7 @@
                 <outlet property="popularyMovieLabel" destination="TW1-jD-8tB" id="p5h-Ua-HcT"/>
                 <outlet property="titleMovieLabel" destination="DKz-sN-gML" id="3g2-is-fFC"/>
             </connections>
-            <point key="canvasLocation" x="173.91304347826087" y="222.32142857142856"/>
+            <point key="canvasLocation" x="-88" y="115"/>
         </tableViewCell>
     </objects>
     <resources>

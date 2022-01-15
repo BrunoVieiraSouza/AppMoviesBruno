@@ -20,15 +20,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
                                 <color key="backgroundColor" red="0.99920397999999999" green="1" blue="0.463138938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kIg-Lo-oI8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kIg-Lo-oI8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="kIg-Lo-oI8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7w8-s1-7Fu"/>
+                            <constraint firstItem="kIg-Lo-oI8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="E5H-wq-lP8"/>
+                            <constraint firstItem="kIg-Lo-oI8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KvH-xb-ADM"/>
+                            <constraint firstAttribute="bottom" secondItem="kIg-Lo-oI8" secondAttribute="bottom" id="eZm-Xm-Uef"/>
                             <constraint firstItem="bl8-rI-QVJ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="ffM-fq-yiU"/>
                             <constraint firstAttribute="trailing" secondItem="bl8-rI-QVJ" secondAttribute="trailing" id="oH0-fR-O75"/>
                             <constraint firstItem="bl8-rI-QVJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qHs-6O-esw"/>
