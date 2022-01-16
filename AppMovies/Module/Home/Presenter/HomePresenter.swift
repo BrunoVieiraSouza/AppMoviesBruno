@@ -16,7 +16,6 @@ class HomePresenter: HomeListViewToPresenterProtocol {
     var interactor: HomeListPresenterToInteractorProtocol?
     var router: HomeListPresenterToRouterProtocol?
     
-    
     func updateView() {
         interactor?.fetchMovie()
     }

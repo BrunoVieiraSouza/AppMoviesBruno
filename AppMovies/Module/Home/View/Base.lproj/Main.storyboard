@@ -39,7 +39,7 @@
                     </view>
                     <connections>
                         <outlet property="posterPathMovie" destination="bl8-rI-QVJ" id="BdP-sD-89F"/>
-                        <outlet property="tableView" destination="kIg-Lo-oI8" id="wEj-ai-RSF"/>
+                        <outlet property="tableViewMovies" destination="kIg-Lo-oI8" id="aUt-jq-v16"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

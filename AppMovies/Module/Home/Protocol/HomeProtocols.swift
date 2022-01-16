@@ -40,7 +40,7 @@ protocol HomeListPresenterToInteractorProtocol: AnyObject {
 
 // presenter para router
 protocol HomeListPresenterToRouterProtocol: AnyObject {
-    static func createModule() -> UIViewController
+    static func createModule(from viewController: HomeViewController)
 }
 
 

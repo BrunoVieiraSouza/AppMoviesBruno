@@ -9,32 +9,36 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView?
+
+    @IBOutlet weak var tableViewMovies: UITableView!
     @IBOutlet weak var posterPathMovie: UIImageView!
     
-    var presenter: HomeListViewToPresenterProtocol?
+    weak var presenter: HomeListViewToPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        HomeRouter.createModule(from: self)
         setUpTableView()
-        
         presenter?.updateView()
+        
     }
     
     func setUpTableView() {
-        guard let tableView = tableView else {return}
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UINib(nibName: "PosterPathTableViewCell", bundle: .main), forCellReuseIdentifier: "PosterPathTableViewCell")
-        tableView.register(UINib(nibName: "MovieTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieTableViewCell")
-        tableView.register(UINib(nibName: "MovieSimilarTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieSimilarTableViewCell")
+        guard let tableViewMovies = tableViewMovies else {return}
+        tableViewMovies.dataSource = self
+        tableViewMovies.delegate = self
+        tableViewMovies.register(UINib(nibName: "PosterPathTableViewCell", bundle: .main), forCellReuseIdentifier: "PosterPathTableViewCell")
+        tableViewMovies.register(UINib(nibName: "MovieTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieTableViewCell")
+        tableViewMovies.register(UINib(nibName: "MovieSimilarTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieSimilarTableViewCell")
     }
 }
 
 extension HomeViewController: HomeListPresenterToViewProtocol {
     
     func showMovie() {
-        tableView?.reloadData()
+        DispatchQueue.main.async {
+            self.tableViewMovies?.reloadData()
+        }
     }
     
     func showError() {
@@ -76,9 +80,11 @@ extension HomeViewController: UITableViewDataSource {
           cell?.setCellMovie(title: title, like: voteCount, populary: populary)
             return cell ?? UITableViewCell()
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSimilarTableViewCell", for: indexPath) as? MovieSimilarTableViewCell
-        return cell ?? UITableViewCell()
+        if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSimilarTableViewCell", for: indexPath) as? MovieSimilarTableViewCell
+            return cell ?? UITableViewCell()
+        }
+        return UITableViewCell()
     }
 }
 

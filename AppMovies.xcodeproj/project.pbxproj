@@ -106,7 +106,7 @@
 				B03B4469278F31CB00B3AD7C /* Protocol */,
 				B03B446B278F31CB00B3AD7C /* View */,
 				B03B4467278F31CB00B3AD7C /* Presenter */,
-				B03B446F278F31CB00B3AD7C /* Interector */,
+				B03B446F278F31CB00B3AD7C /* Interactor */,
 				B03B4471278F31CB00B3AD7C /* Router */,
 			);
 			path = Home;
@@ -148,12 +148,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		B03B446F278F31CB00B3AD7C /* Interector */ = {
+		B03B446F278F31CB00B3AD7C /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
 				B03B4470278F31CB00B3AD7C /* HomeInteractor.swift */,
 			);
-			path = Interector;
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		B03B4471278F31CB00B3AD7C /* Router */ = {
