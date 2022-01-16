@@ -20,7 +20,6 @@ class HomeViewController: UIViewController {
         HomeRouter.createModule(from: self)
         setUpTableView()
         presenter?.updateView()
-        
     }
     
     func setUpTableView() {
@@ -112,10 +111,10 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return posterPathMovie.frame.height
+            return posterPathMovie.frame.height * 0.9
         }
         if indexPath.section == 1 {
-            return 130
+            return 120
         }
         return 90.0
     }
