@@ -26,13 +26,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🤍1.2 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNS-1J-4az">
-                                <rect key="frame" x="10" y="97" width="65.5" height="14.5"/>
+                                <rect key="frame" x="10" y="82" width="65.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎦 1332.3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TW1-jD-8tB">
-                                <rect key="frame" x="115.5" y="97" width="59" height="14.5"/>
+                                <rect key="frame" x="115.5" y="82" width="59" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -47,6 +47,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="🤍"/>
+                                <connections>
+                                    <action selector="Favoritebutton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aJo-ef-6SD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,7 +60,7 @@
                             <constraint firstItem="TW1-jD-8tB" firstAttribute="centerY" secondItem="NNS-1J-4az" secondAttribute="centerY" id="EYQ-b3-1ws"/>
                             <constraint firstItem="K1A-dv-Oeh" firstAttribute="leading" secondItem="DKz-sN-gML" secondAttribute="trailing" constant="10" id="MOJ-EY-WXq"/>
                             <constraint firstItem="NNS-1J-4az" firstAttribute="leading" secondItem="o3f-8c-pMq" secondAttribute="leading" constant="10" id="Mwg-dI-iql"/>
-                            <constraint firstItem="NNS-1J-4az" firstAttribute="top" secondItem="DKz-sN-gML" secondAttribute="bottom" constant="20" id="kr4-pW-0CH"/>
+                            <constraint firstItem="NNS-1J-4az" firstAttribute="top" secondItem="DKz-sN-gML" secondAttribute="bottom" constant="5" id="kr4-pW-0CH"/>
                             <constraint firstItem="K1A-dv-Oeh" firstAttribute="top" secondItem="o3f-8c-pMq" secondAttribute="top" constant="10" id="qVF-Wb-17M"/>
                             <constraint firstAttribute="trailing" secondItem="K1A-dv-Oeh" secondAttribute="trailing" constant="10" id="t4x-c5-Arv"/>
                             <constraint firstItem="DKz-sN-gML" firstAttribute="leading" secondItem="o3f-8c-pMq" secondAttribute="leading" constant="10" id="v28-Ih-zF9"/>

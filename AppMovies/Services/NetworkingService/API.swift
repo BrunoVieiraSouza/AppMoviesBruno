@@ -9,7 +9,6 @@ import Foundation
 
 private let baseURL = "https://api.themoviedb.org"
 private let apiKey = "dab9b242bdeecdff3d4a8e222a77b4c7"
-//"https://api.themoviedb.org/3/movie/634649?api_key=dab9b242bdeecdff3d4a8e222a77b4c7&language=pt-BR"
 
 enum MovieError {
     case url
@@ -19,7 +18,7 @@ enum MovieError {
     case responseStatusCode(code: Int)
     case invalidJson }
 
-class REST {
+class API {
     
     // MARK: - URLSession Configurate
     private static let configuration: URLSessionConfiguration = {
@@ -30,11 +29,11 @@ class REST {
     }()
     private static let session = URLSession(configuration: configuration)
     
-    //MARK: - Request
+    //MARK: - Request Movies
     
     static func fetchMovie (idMovie: Int, completion: @escaping (MovieHomeModel) -> Void, onError: @escaping (MovieError) -> Void) {
+        
         let urlString = "\(baseURL)/3/movie/\(idMovie)?api_key=\(apiKey)&language=pt-BR"
-        // https://api.themoviedb.org/3/movie/568124?api_key=dab9b242bdeecdff3d4a8e222a77b4c7&language=pt-BR
         guard let url = URL(string: urlString) else {
             onError(.url)
             return
@@ -67,8 +66,9 @@ class REST {
         dataTask.resume()
     }
     
-    static func fetchMoviesSimilar (idMovie: Int, completion: @escaping (MoviesSimilarModel) -> Void, onError: @escaping (MovieError) -> Void) {
-        let urlString = "\(baseURL)/3/movie/\(idMovie)?api_key=\(apiKey)&language=pt-BR"
+    
+    static func fetchMoviesSimilar (idMovie: Int, completion: @escaping (ResultsMovies) -> Void, onError: @escaping (MovieError) -> Void) {
+        let urlString = "\(baseURL)/3/movie/\(idMovie)/similar?api_key=\(apiKey)&language=pt-BR"
         guard let url = URL(string: urlString) else {
             onError(.url)
             return
@@ -84,10 +84,10 @@ class REST {
                         return
                     }
                     do {
-                        let resultsMoviesSimilar = try JSONDecoder().decode(MoviesSimilarModel.self, from: data)
-                        completion(resultsMoviesSimilar)
+                        let results = try JSONDecoder().decode(ResultsMovies.self, from: data)
+                        completion(results)
                     } catch {
-                        print(error.localizedDescription)
+                        print("erro ao decodificar o json")
                         onError(.invalidJson)
                     }
                 } else {

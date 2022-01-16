@@ -14,3 +14,9 @@ extension String {
         return URL(string: "\(posterUrl)\(self)")
     }
 }
+
+extension String {
+    func firstWord() -> String? {
+        return self.components(separatedBy: "-").first
+    }
+}

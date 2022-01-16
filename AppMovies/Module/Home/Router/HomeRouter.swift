@@ -22,7 +22,6 @@ class HomeRouter: HomeListPresenterToRouterProtocol {
             presenter.router = router
             presenter.interactor = interactor
             interactor.presenter = presenter
-            
         }
     
     static var mainStoryBoard: UIStoryboard {

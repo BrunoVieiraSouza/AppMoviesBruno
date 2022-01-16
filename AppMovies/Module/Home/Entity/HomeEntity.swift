@@ -22,8 +22,5 @@ struct MovieHomeModel: Codable {
         case popularity
         case posterPath = "poster_path"
         case voteCount = "vote_count"
-        
     }
-    
-    
 }

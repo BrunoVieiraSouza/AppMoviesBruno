@@ -7,10 +7,10 @@
 
 import UIKit
 import Kingfisher
+import SwiftUI
 
 class HomeViewController: UIViewController {
     
-
     @IBOutlet weak var tableViewMovies: UITableView!
     @IBOutlet weak var posterPathMovie: UIImageView!
     
@@ -46,7 +46,7 @@ extension HomeViewController: UITableViewDataSource {
         case 1:
             return 1
         default:
-            return 10
+            return presenter?.getMovieSimilaresCount() ?? 2
         }
     }
     
@@ -65,7 +65,6 @@ extension HomeViewController: UITableViewDataSource {
                 self.posterPathMovie.kf.setImage(with: "\(movie?.posterPath ?? "")".url)
             }
             
-    
             guard let title = movie?.originalTitle, let voteCount = movie?.voteCount, let populary = movie?.popularity else {
                 return cell ?? UITableViewCell()
             }
@@ -74,6 +73,11 @@ extension HomeViewController: UITableViewDataSource {
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSimilarTableViewCell", for: indexPath) as? MovieSimilarTableViewCell
+            let moviesSimilares = presenter?.getMoviesSimilares(index: indexPath.row)
+            guard let title = moviesSimilares?.title, let releaseDate = moviesSimilares?.releaseDate, let genre = moviesSimilares?.genreIDS, let posterPath = moviesSimilares?.posterPath else {
+                return cell ?? UITableViewCell()
+            }
+            cell?.setCellSimilares(title: title, date: releaseDate, genre: genre, posterPath: posterPath)
             return cell ?? UITableViewCell()
         default:
             return UITableViewCell()
@@ -104,13 +108,14 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return posterPathMovie.frame.height * 0.9
-        }
-        if indexPath.section == 1 {
+        switch indexPath.section {
+        case 0:
+            return posterPathMovie.frame.height - 30
+        case 1:
             return 120
+        default:
+            return 105
         }
-        return 90.0
     }
 }
 

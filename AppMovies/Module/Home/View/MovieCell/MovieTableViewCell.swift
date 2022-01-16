@@ -16,7 +16,11 @@ class MovieTableViewCell: UITableViewCell {
     
     func setCellMovie(title: String, like: Int, populary: Double) {
         titleMovieLabel.text = title
-        likeMovieLabel.text = "🤍 \(like)"
+        likeMovieLabel.text = "🤍 \(like) Likes"
         popularyMovieLabel.text = "🎦 \(populary)"
+    }
+    
+    @IBAction func Favoritebutton(_ sender: UIButton) {
+        
     }
 }
