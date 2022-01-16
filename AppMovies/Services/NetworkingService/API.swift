@@ -10,8 +10,6 @@ import Foundation
 private let baseURL = "https://api.themoviedb.org"
 private let apiKey = "dab9b242bdeecdff3d4a8e222a77b4c7"
 
-///https://api.themoviedb.org/3/genre/movie/list?api_key=dab9b242bdeecdff3d4a8e222a77b4c7&language=pt-BR
-
 enum MovieError {
     case url
     case taskError(error: Error)
@@ -31,15 +29,17 @@ class API {
     }()
     private static let session = URLSession(configuration: configuration)
     
-    //MARK: - Request Movies
     
+    //MARK: - Request Movies
     static func fetchMovie (idMovie: Int, completion: @escaping (MovieHomeModel) -> Void, onError: @escaping (MovieError) -> Void) {
         
         let urlString = "\(baseURL)/3/movie/\(idMovie)?api_key=\(apiKey)&language=pt-BR"
+        
         guard let url = URL(string: urlString) else {
             onError(.url)
             return
         }
+        
         let dataTask = session.dataTask(with: url) { data, response, error in
             if error == nil {
                 guard let response = response as? HTTPURLResponse else {
@@ -69,7 +69,7 @@ class API {
     }
     
     
-    static func fetchMoviesSimilar (idMovie: Int, completion: @escaping (ResultsMovies) -> Void, onError: @escaping (MovieError) -> Void) {
+    static func fetchMoviesSimilar(idMovie: Int, completion: @escaping (ResultsMovies) -> Void, onError: @escaping (MovieError) -> Void) {
         let urlString = "\(baseURL)/3/movie/\(idMovie)/similar?api_key=\(apiKey)&language=pt-BR"
         guard let url = URL(string: urlString) else {
             onError(.url)

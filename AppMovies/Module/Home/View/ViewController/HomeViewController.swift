@@ -92,22 +92,14 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let alpha = scrollView.contentOffset.y
-        //alpha =  alpha / 1000
-        //print(alpha)
-        posterPathMovie.alpha = 1
-        if alpha < 100.0  {
-            posterPathMovie.alpha = 1
-        }
-        if alpha < 200.0 {
-            posterPathMovie.alpha = 1
-        }
-        if alpha < 300.0  {
-            posterPathMovie.alpha = 1
-        }
-        if alpha < 200.0  {
-            posterPathMovie.alpha = 1
-        }
+        let y = scrollView.contentOffset.y
+                
+                let index = Int(scrollView.contentOffset.y / scrollView.frame.height)
+                
+                let alphaFadeIn = (y - (scrollView.frame.height) * CGFloat(index) / scrollView.frame.height )
+                let alpha = 1 - (alphaFadeIn / 200)
+        
+            posterPathMovie.alpha = alpha
         
     }
     
@@ -121,6 +113,7 @@ extension HomeViewController: UITableViewDelegate {
             return 105
         }
     }
+
 }
 
 extension HomeViewController: HomeListPresenterToViewProtocol {

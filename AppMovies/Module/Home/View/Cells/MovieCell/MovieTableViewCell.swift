@@ -13,6 +13,9 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var titleMovieLabel: UILabel!
     @IBOutlet weak var likeMovieLabel: UILabel!
     @IBOutlet weak var popularyMovieLabel: UILabel!
+    @IBOutlet weak var favoriteButtonOutlet: UIButton!
+    
+    var cliqueButton: Bool = false
     
     func setCellMovie(title: String, like: Int, populary: Double) {
         titleMovieLabel.text = title
@@ -20,7 +23,16 @@ class MovieTableViewCell: UITableViewCell {
         popularyMovieLabel.text = "🎦 \(populary)"
     }
     
-    @IBAction func Favoritebutton(_ sender: UIButton) {
+    @IBAction func favoritebutton(_ sender: UIButton) {
+        if cliqueButton == false {
+            favoriteButtonOutlet.setTitle("💛", for: .normal)
+            cliqueButton = true
+        } else {
+            favoriteButtonOutlet.setTitle("🤍", for: .normal)
+            cliqueButton = false
+        }
+        
         
     }
+    
 }

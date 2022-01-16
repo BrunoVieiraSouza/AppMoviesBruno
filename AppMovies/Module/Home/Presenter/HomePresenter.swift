@@ -33,7 +33,6 @@ class HomePresenter: HomeListViewToPresenterProtocol {
     func getMovieSimilaresCount() -> Int? {
         return moviesSimilares?.count
     }
-    
 }
 
 extension HomePresenter: HomeListInteractorToPresenterProtocol {

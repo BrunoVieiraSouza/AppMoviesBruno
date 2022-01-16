@@ -20,19 +20,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="434" height="130"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Very Best Of Johnny Depp" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKz-sN-gML">
-                                <rect key="frame" x="10" y="10" width="359" height="67"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <rect key="frame" x="10" y="10" width="359" height="62.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🤍1.2 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNS-1J-4az">
-                                <rect key="frame" x="10" y="82" width="65.5" height="14.5"/>
+                                <rect key="frame" x="10" y="77.5" width="65.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎦 1332.3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TW1-jD-8tB">
-                                <rect key="frame" x="115.5" y="82" width="59" height="14.5"/>
+                                <rect key="frame" x="115.5" y="77.5" width="59" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="🤍"/>
                                 <connections>
-                                    <action selector="Favoritebutton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aJo-ef-6SD"/>
+                                    <action selector="favoritebutton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DrA-U4-d4w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,6 +77,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="favoriteButtonOutlet" destination="K1A-dv-Oeh" id="0iG-fC-t9h"/>
                 <outlet property="likeMovieLabel" destination="NNS-1J-4az" id="iOO-oj-kH3"/>
                 <outlet property="movieViewFundo" destination="o3f-8c-pMq" id="c8j-7W-t3y"/>
                 <outlet property="popularyMovieLabel" destination="TW1-jD-8tB" id="p5h-Ua-HcT"/>
