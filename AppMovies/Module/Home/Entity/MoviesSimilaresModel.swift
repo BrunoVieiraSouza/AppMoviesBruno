@@ -30,3 +30,8 @@ struct MoviesSimilaresModel: Codable {
         case releaseDate = "release_date"
     }
 }
+
+struct Genres: Codable {
+    let id: Int
+    let name: String
+}

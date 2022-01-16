@@ -75,9 +75,13 @@ extension HomeViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSimilarTableViewCell", for: indexPath) as? MovieSimilarTableViewCell
             let moviesSimilares = presenter?.getMoviesSimilares(index: indexPath.row)
             guard let title = moviesSimilares?.title, let releaseDate = moviesSimilares?.releaseDate, let genre = moviesSimilares?.genreIDS, let posterPath = moviesSimilares?.posterPath else {
+                
                 return cell ?? UITableViewCell()
             }
-            cell?.setCellSimilares(title: title, date: releaseDate, genre: genre, posterPath: posterPath)
+            guard let genreString = cell?.setGenres(genre: genre) else {
+                return cell ?? UITableViewCell()
+            }
+            cell?.setCellSimilares(title: title, date: releaseDate, genre: genreString, posterPath: posterPath)
             return cell ?? UITableViewCell()
         default:
             return UITableViewCell()

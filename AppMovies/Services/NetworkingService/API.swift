@@ -10,6 +10,8 @@ import Foundation
 private let baseURL = "https://api.themoviedb.org"
 private let apiKey = "dab9b242bdeecdff3d4a8e222a77b4c7"
 
+///https://api.themoviedb.org/3/genre/movie/list?api_key=dab9b242bdeecdff3d4a8e222a77b4c7&language=pt-BR
+
 enum MovieError {
     case url
     case taskError(error: Error)
