@@ -6,6 +6,8 @@
 
 import Foundation
 
+// MARK: - Entity Movies Similares
+
 struct ResultsMovies: Codable {
     let page: Int
     let results: [MoviesSimilaresModel]
@@ -29,9 +31,4 @@ struct MoviesSimilaresModel: Codable {
         case posterPath = "poster_path"
         case releaseDate = "release_date"
     }
-}
-
-struct Genres: Codable {
-    let id: Int
-    let name: String
 }

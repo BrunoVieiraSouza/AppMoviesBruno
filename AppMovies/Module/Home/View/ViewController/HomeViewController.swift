@@ -11,11 +11,14 @@ import SwiftUI
 
 class HomeViewController: UIViewController {
     
+    // MARK: - Iboutlets
     @IBOutlet weak var tableViewMovies: UITableView!
     @IBOutlet weak var posterPathMovie: UIImageView!
     
+    //MARK: - Properties
     weak var presenter: HomeListViewToPresenterProtocol?
-
+    
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         HomeRouter.createModule(from: self)
@@ -23,6 +26,7 @@ class HomeViewController: UIViewController {
         presenter?.updateView()
     }
     
+    //MARK: - Methods
     func setUpTableView() {
         guard let tableViewMovies = tableViewMovies else {return}
         tableViewMovies.dataSource = self
@@ -33,6 +37,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions HomeViewController
 extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,6 +58,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
+            
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PosterPathTableViewCell", for: indexPath) as? PosterPathTableViewCell
             return cell ?? UITableViewCell()
@@ -60,7 +66,7 @@ extension HomeViewController: UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell
             let movie = presenter?.getMovie()
-
+            
             DispatchQueue.main.async {
                 self.posterPathMovie.kf.setImage(with: "\(movie?.posterPath ?? "")".url)
             }
@@ -74,8 +80,8 @@ extension HomeViewController: UITableViewDataSource {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSimilarTableViewCell", for: indexPath) as? MovieSimilarTableViewCell
             let moviesSimilares = presenter?.getMoviesSimilares(index: indexPath.row)
+            
             guard let title = moviesSimilares?.title, let releaseDate = moviesSimilares?.releaseDate, let genre = moviesSimilares?.genreIDS, let posterPath = moviesSimilares?.posterPath else {
-                
                 return cell ?? UITableViewCell()
             }
             guard let genreString = cell?.setGenres(genre: genre) else {
@@ -83,6 +89,7 @@ extension HomeViewController: UITableViewDataSource {
             }
             cell?.setCellSimilares(title: title, date: releaseDate, genre: genreString, posterPath: posterPath)
             return cell ?? UITableViewCell()
+            
         default:
             return UITableViewCell()
         }
@@ -92,15 +99,13 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         let y = scrollView.contentOffset.y
-                
-                let index = Int(scrollView.contentOffset.y / scrollView.frame.height)
-                
-                let alphaFadeIn = (y - (scrollView.frame.height) * CGFloat(index) / scrollView.frame.height )
-                let alpha = 1 - (alphaFadeIn / 200)
+        let index = Int(scrollView.contentOffset.y / scrollView.frame.height)
+        let alphaFadeIn = (y - (scrollView.frame.height) * CGFloat(index) / scrollView.frame.height )
+        let alpha = 1 - (alphaFadeIn / 200)
         
-            posterPathMovie.alpha = alpha
-        
+        posterPathMovie.alpha = alpha
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -110,10 +115,9 @@ extension HomeViewController: UITableViewDelegate {
         case 1:
             return 120
         default:
-            return 105
+            return 110
         }
     }
-
 }
 
 extension HomeViewController: HomeListPresenterToViewProtocol {
@@ -125,7 +129,10 @@ extension HomeViewController: HomeListPresenterToViewProtocol {
     }
     
     func showError() {
+        let alert = UIAlertController(title: "Alerta", message: "Houve um problema ao carregar o filme", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
         print("erro no showMovie View")
     }
 }
-

@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Welcome
+// MARK: - MovieHomeModel
 struct MovieHomeModel: Codable {
     
     let id: Int

@@ -9,6 +9,7 @@ import Foundation
 
 class HomePresenter: HomeListViewToPresenterProtocol {
     
+    
     var movie: MovieHomeModel?
     var moviesSimilares: [MoviesSimilaresModel]?
 
@@ -17,6 +18,7 @@ class HomePresenter: HomeListViewToPresenterProtocol {
     var interactor: HomeListPresenterToInteractorProtocol?
     var router: HomeListPresenterToRouterProtocol?
     
+    //MARK: - Methods
     func updateView() {
         interactor?.fetchMovie()
         interactor?.fetchMovieSimilares()
@@ -35,6 +37,7 @@ class HomePresenter: HomeListViewToPresenterProtocol {
     }
 }
 
+    //MARK: - Extensions HomePresenter
 extension HomePresenter: HomeListInteractorToPresenterProtocol {
     func movieFetched(movie: MovieHomeModel) {
         self.movie = movie
@@ -47,9 +50,8 @@ extension HomePresenter: HomeListInteractorToPresenterProtocol {
     }
     
     func movieSimilaresFetchedFailed() {
-        
+        view?.showError()
     }
-    
     
     func movieFetchedFailed() {
         view?.showError()

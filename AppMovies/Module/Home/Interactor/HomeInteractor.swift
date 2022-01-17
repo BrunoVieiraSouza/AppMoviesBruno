@@ -8,16 +8,23 @@
 import Foundation
 
 class HomeInteractor: HomeListPresenterToInteractorProtocol {
-
+    
+    //MARK: - Properties
     var presenter: HomeListInteractorToPresenterProtocol?
     var idMovie: Int = 585083
     
+    //MARK: - Methods request
     func fetchMovie() {
         API.fetchMovie(idMovie: idMovie) { movie in
             self.presenter?.movieFetched(movie: movie)
         } onError: { error in
-            self.presenter?.movieFetchedFailed()
-            print("error ao buscar movie")
+            
+            switch error {
+            case .responseStatusCode(code: _):
+                self.presenter?.movieFetchedFailed()
+            default:
+                print("error ao buscar movie")
+            }
         }
     }
     
@@ -25,7 +32,12 @@ class HomeInteractor: HomeListPresenterToInteractorProtocol {
         API.fetchMoviesSimilar(idMovie: idMovie) { resultsMoviesSimilares in
             self.presenter?.movieSimilaresFetched(movies: resultsMoviesSimilares)
         } onError: { error in
-            print("erro ao carregar filmes similares")
+            switch error {
+            case .responseStatusCode(code: _):
+                self.presenter?.movieFetchedFailed()
+            default:
+                print("error ao buscar movie similares")
+            }
         }
     }
 }

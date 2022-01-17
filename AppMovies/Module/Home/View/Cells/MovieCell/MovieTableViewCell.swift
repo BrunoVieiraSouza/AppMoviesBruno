@@ -9,12 +9,14 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var movieViewFundo: UIView!
     @IBOutlet weak var titleMovieLabel: UILabel!
     @IBOutlet weak var likeMovieLabel: UILabel!
     @IBOutlet weak var popularyMovieLabel: UILabel!
     @IBOutlet weak var favoriteButtonOutlet: UIButton!
     
+    //MARK: - Methods
     var cliqueButton: Bool = false
     
     func setCellMovie(title: String, like: Int, populary: Double) {
@@ -31,8 +33,5 @@ class MovieTableViewCell: UITableViewCell {
             favoriteButtonOutlet.setTitle("🤍", for: .normal)
             cliqueButton = false
         }
-        
-        
     }
-    
 }

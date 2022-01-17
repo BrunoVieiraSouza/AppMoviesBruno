@@ -8,25 +8,24 @@
 import Foundation
 import UIKit
 
-// view para presenter
+// MARK: - Protocolos do Modulo Home
 protocol HomeListViewToPresenterProtocol: AnyObject {
+    
     var view: HomeListPresenterToViewProtocol? { get set }
     var interactor: HomeListPresenterToInteractorProtocol? { get set }
     var router: HomeListPresenterToRouterProtocol? { get set }
-    
+
     func updateView()
     func getMovieSimilaresCount() -> Int?
     func getMovie() -> MovieHomeModel?
     func getMoviesSimilares(index: Int) -> MoviesSimilaresModel?
 }
 
-// presenter para view
 protocol HomeListPresenterToViewProtocol: AnyObject {
     func showMovie()
     func showError()
 }
 
-// interactor para presenter
 protocol HomeListInteractorToPresenterProtocol: AnyObject {
     func movieFetched(movie: MovieHomeModel)
     func movieFetchedFailed()
@@ -34,7 +33,6 @@ protocol HomeListInteractorToPresenterProtocol: AnyObject {
     func movieSimilaresFetchedFailed()
 }
 
-//presenter para interactor
 protocol HomeListPresenterToInteractorProtocol: AnyObject {
     var presenter: HomeListInteractorToPresenterProtocol? { get set }
 
@@ -42,10 +40,6 @@ protocol HomeListPresenterToInteractorProtocol: AnyObject {
     func fetchMovieSimilares()
 }
 
-// presenter para router
 protocol HomeListPresenterToRouterProtocol: AnyObject {
     static func createModule(from viewController: HomeViewController)
 }
-
-
-
