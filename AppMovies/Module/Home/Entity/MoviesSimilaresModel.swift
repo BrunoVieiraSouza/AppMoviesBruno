@@ -7,7 +7,6 @@
 import Foundation
 
 // MARK: - Entity Movies Similares
-
 struct ResultsMovies: Codable {
     let page: Int
     let results: [MoviesSimilaresModel]
