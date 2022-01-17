@@ -17,7 +17,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteButtonOutlet: UIButton!
     
     //MARK: - Methods
-    var cliqueButton: Bool = false
+    var cliqueButton = false
     
     func setCellMovie(title: String, like: Int, populary: Double) {
         titleMovieLabel.text = title
@@ -26,12 +26,9 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     @IBAction func favoritebutton(_ sender: UIButton) {
-        if cliqueButton == false {
-            favoriteButtonOutlet.setTitle("💛", for: .normal)
-            cliqueButton = true
-        } else {
-            favoriteButtonOutlet.setTitle("🤍", for: .normal)
-            cliqueButton = false
-        }
+
+        let title = cliqueButton ? "💛" : "🤍"
+        favoriteButtonOutlet.setTitle(title, for: .normal)
+        cliqueButton.toggle()
     }
 }
