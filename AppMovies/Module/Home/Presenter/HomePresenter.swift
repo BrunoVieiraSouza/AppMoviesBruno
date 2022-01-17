@@ -9,7 +9,6 @@ import Foundation
 
 class HomePresenter: HomeListViewToPresenterProtocol {
     
-    
     var movie: MovieHomeModel?
     var moviesSimilares: [MoviesSimilaresModel]?
 

@@ -12,7 +12,7 @@ import SwiftUI
 class HomeViewController: UIViewController {
     
     // MARK: - Iboutlets
-    @IBOutlet weak var tableViewMovies: UITableView!
+    @IBOutlet weak var tableViewMovies: UITableView?
     @IBOutlet weak var posterPathMovie: UIImageView!
     
     //MARK: - Properties
@@ -35,30 +35,32 @@ class HomeViewController: UIViewController {
         tableViewMovies.register(UINib(nibName: "MovieTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieTableViewCell")
         tableViewMovies.register(UINib(nibName: "MovieSimilarTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieSimilarTableViewCell")
     }
+    
+    func numberSectionsTableView() -> Int {
+        return 3
+    }
 }
 
 // MARK: - Extensions HomeViewController
 extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return numberSectionsTableView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 1
-        case 1:
+        case 0, 1:
             return 1
         default:
-            return presenter?.getMovieSimilaresCount() ?? 2
+            return presenter?.getMovieSimilaresCount() ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
-            
+
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PosterPathTableViewCell", for: indexPath) as? PosterPathTableViewCell
             return cell ?? UITableViewCell()
