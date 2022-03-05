@@ -93,6 +93,7 @@ extension HomeViewController: UITableViewDataSource {
         }
     }
 }
+//MARK: - TABLEVIEW DELEGATE
 
 extension HomeViewController: UITableViewDelegate {
     
@@ -111,9 +112,9 @@ extension HomeViewController: UITableViewDelegate {
         case 0:
             return posterPathMovie.frame.height - 30
         case 1:
-            return 120
+            return 125
         default:
-            return 110
+            return 115
         }
     }
 }
@@ -131,6 +132,6 @@ extension HomeViewController: HomeListPresenterToViewProtocol {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
-        print("erro no showMovie View")
+        print("erro showMovie View")
     }
 }
