@@ -9,6 +9,8 @@ import UIKit
 
 final class MovieSimilarTableViewCell: UITableViewCell {
     
+    static let reuseIdentifier = String(describing: MovieSimilarTableViewCell.self)
+    
     // MARK: - Dicionario dos Generos dos Movies
     private let genreDictionary: [Int: String] = [28: "Ação",
                                                   12: "Aventura",

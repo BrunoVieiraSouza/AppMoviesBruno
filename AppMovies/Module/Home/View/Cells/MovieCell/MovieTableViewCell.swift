@@ -9,6 +9,8 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
     
+    static let reuseIdentifier = String(describing: MovieTableViewCell.self)
+    
     // MARK: - IBOutlets
     @IBOutlet weak var movieViewFundo: UIView!
     @IBOutlet weak var titleMovieLabel: UILabel!

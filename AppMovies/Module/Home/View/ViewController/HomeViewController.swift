@@ -36,7 +36,7 @@ final class HomeViewController: UIViewController {
         tableViewMovies.delegate = self
         tableViewMovies.register(UINib(nibName: "PosterPathTableViewCell", bundle: .main), forCellReuseIdentifier: "PosterPathTableViewCell")
         tableViewMovies.register(UINib(nibName: "MovieTableViewCell", bundle: .main), forCellReuseIdentifier: MovieTableViewCell.reuseIdentifier)
-        tableViewMovies.register(UINib(nibName: "MovieSimilarTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieSimilarTableViewCell")
+        tableViewMovies.register(UINib(nibName: "MovieSimilarTableViewCell", bundle: .main), forCellReuseIdentifier: MovieSimilarTableViewCell.reuseIdentifier)
     }
     
     func numberSectionsTableView() -> Int {
