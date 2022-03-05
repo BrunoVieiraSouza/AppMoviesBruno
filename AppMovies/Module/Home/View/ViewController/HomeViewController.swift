@@ -9,7 +9,10 @@ import UIKit
 import Kingfisher
 import SwiftUI
 
-final class HomeViewController: UIViewController {
+
+//MARK: - PROJETOOooooooo
+
+class HomeViewController: UIViewController {
     
     // MARK: - Iboutlets
     @IBOutlet weak var tableViewMovies: UITableView?
@@ -21,8 +24,8 @@ final class HomeViewController: UIViewController {
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        HomeRouter.createModule(from: self)
         setUpTableView()
+        HomeRouter.createModule(from: self)
         presenter?.updateView()
     }
     
@@ -45,11 +48,33 @@ final class HomeViewController: UIViewController {
 }
 
 // MARK: - Extensions HomeViewController
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return numberSectionsTableView()
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            switch indexPath.section {
+            case 0:
+                return posterPathMovie.frame.height - 30
+            case 1:
+                return 125
+            default:
+                return 115
+            }
+        }
+        
+        let y = scrollView.contentOffset.y
+        let index = Int(scrollView.contentOffset.y / scrollView.frame.height)
+        let alphaFadeIn = (y - (scrollView.frame.height) * CGFloat(index) / scrollView.frame.height )
+        let alpha = 1 - (alphaFadeIn / 200)
+        
+        posterPathMovie.alpha = alpha
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -110,31 +135,6 @@ extension HomeViewController: UITableViewDataSource {
             
         default:
             return UITableViewCell()
-        }
-    }
-}
-//MARK: - TABLEVIEW DELEGATE
-
-extension HomeViewController: UITableViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let y = scrollView.contentOffset.y
-        let index = Int(scrollView.contentOffset.y / scrollView.frame.height)
-        let alphaFadeIn = (y - (scrollView.frame.height) * CGFloat(index) / scrollView.frame.height )
-        let alpha = 1 - (alphaFadeIn / 200)
-        
-        posterPathMovie.alpha = alpha
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return posterPathMovie.frame.height - 30
-        case 1:
-            return 125
-        default:
-            return 115
         }
     }
 }
