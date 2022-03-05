@@ -68,11 +68,7 @@ extension HomeViewController: UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell
             let movie = presenter?.getMovie()
-            
-            DispatchQueue.main.async {
-                self.posterPathMovie.kf.setImage(with: "\(movie?.posterPath ?? "")".url)
-            }
-            
+            posterPathMovie.kf.setImage(with: "\(movie?.posterPath ?? "")".url)
             guard let title = movie?.originalTitle, let voteCount = movie?.voteCount, let populary = movie?.popularity else {
                 return cell ?? UITableViewCell()
             }
