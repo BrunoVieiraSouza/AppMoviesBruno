@@ -23,7 +23,7 @@ class HomeInteractor: HomeListPresenterToInteractorProtocol {
             case .responseStatusCode(code: _):
                 self.presenter?.movieFetchedFailed()
             default:
-                print("error ao buscar movie")
+                print("error ao buscar movies")
             }
         }
     }
