@@ -27,29 +27,30 @@ final class HomeViewController: UIViewController {
     }
     
     //MARK: - Methods
+    
+    func numberSectionsTableView() -> Int {
+        return 3
+    }
+    
     func setUpTableView() {
         guard let tableViewMovies = tableViewMovies else {
             return
         }
         
         tableViewMovies.dataSource = self
-        tableViewMovies.delegate = self
+        
+        tableViewMovies.register(UINib(nibName: "MovieSimilarTableViewCell", bundle: .main), forCellReuseIdentifier:
         tableViewMovies.register(UINib(nibName: "PosterPathTableViewCell", bundle: .main), forCellReuseIdentifier: "PosterPathTableViewCell")
         tableViewMovies.register(UINib(nibName: "MovieTableViewCell", bundle: .main), forCellReuseIdentifier: MovieTableViewCell.reuseIdentifier)
-        tableViewMovies.register(UINib(nibName: "MovieSimilarTableViewCell", bundle: .main), forCellReuseIdentifier: MovieSimilarTableViewCell.reuseIdentifier)
+         MovieSimilarTableViewCell.reuseIdentifier)
+        
+        tableViewMovies.delegate = self
     }
-    
-    func numberSectionsTableView() -> Int {
-        return 3
-    }
+
 }
 
 // MARK: - Extensions HomeViewController
 extension HomeViewController: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return numberSectionsTableView()
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -60,18 +61,22 @@ extension HomeViewController: UITableViewDataSource {
         }
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return numberSectionsTableView()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
             
-        case 0:
+        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PosterPathTableViewCell", for: indexPath) as? PosterPathTableViewCell else {
                 return UITableViewCell()
             }
             
             return cell
             
-        case 1:
+        case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell else {
                 return UITableViewCell()
             }
@@ -116,17 +121,7 @@ extension HomeViewController: UITableViewDataSource {
 //MARK: - TABLEVIEW DELEGATE
 
 extension HomeViewController: UITableViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let y = scrollView.contentOffset.y
-        let index = Int(scrollView.contentOffset.y / scrollView.frame.height)
-        let alphaFadeIn = (y - (scrollView.frame.height) * CGFloat(index) / scrollView.frame.height )
-        let alpha = 1 - (alphaFadeIn / 200)
-        
-        posterPathMovie.alpha = alpha
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
@@ -137,6 +132,17 @@ extension HomeViewController: UITableViewDelegate {
             return 115
         }
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let y = scrollView.contentOffset.y
+        let index = Int(scrollView.contentOffset.y / scrollView.frame.height)
+        let alphaFadeIn = (y - (scrollView.frame.height) * CGFloat(index) / scrollView.frame.height )
+        let alpha = 1 - (alphaFadeIn / 200)
+        
+        posterPathMovie.alpha = alpha
+    }
+
 }
 
 extension HomeViewController: HomeListPresenterToViewProtocol {

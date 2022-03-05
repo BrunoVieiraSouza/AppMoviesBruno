@@ -21,7 +21,7 @@ class MovieTableViewCell: UITableViewCell {
     //MARK: - Methods
     var cliqueButton = false
     
-    func setCellMovie(title: String, like: Int, populary: Double) {
+    func setCellMovie(title: String = "", like: Int, populary: Float) {
         titleMovieLabel.text = title
         likeMovieLabel.text = "🤍 \(like) Curtidas no APP :D"
         popularyMovieLabel.text = "🎦 \(populary)"
