@@ -21,7 +21,7 @@ class MovieTableViewCell: UITableViewCell {
     
     func setCellMovie(title: String, like: Int, populary: Double) {
         titleMovieLabel.text = title
-        likeMovieLabel.text = "🤍 \(like) Curtidas"
+        likeMovieLabel.text = "🤍 \(like) Curtidas no APP"
         popularyMovieLabel.text = "🎦 \(populary)"
     }
     
